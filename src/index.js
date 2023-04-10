@@ -89,8 +89,8 @@ function showPosition(position) {
   axios.get(apiUrl).then(function (response) {
     h1.innerHTML = response.data.name;
     temp.innerHTML = Math.round(response.data.main.temp);
-    wind.innerHTML = response.data.wind.speed;
-    humidity.innerHTML = response.data.main.humidity;
+    wind.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} m/sec`;
+    humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
   });
 }
 
