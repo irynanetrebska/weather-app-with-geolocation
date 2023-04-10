@@ -72,6 +72,12 @@ function searchCity(event) {
       describe.innerHTML = response.data.weather[0].main;
       let humidity = document.querySelector("#humidity");
       humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
+      let iconEl = document.querySelector("#icon");
+      iconEl.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
+      iconEl.setAttribute("alt", response.data.weather[0].description);
     }
   });
 }
