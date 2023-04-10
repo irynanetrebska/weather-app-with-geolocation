@@ -79,7 +79,7 @@ searchEngine.addEventListener("submit", searchCity);
 //show geolocation
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
-  let lon = (h1.innerHTML = position);
+  h1.innerHTML = position;
 }
 
 function getCurrentPosition() {
