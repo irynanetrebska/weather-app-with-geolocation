@@ -83,7 +83,7 @@ searchEngine.addEventListener("submit", searchCity);
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
   let describe = document.querySelector("h5");
-  let icon = document.querySelector("#icon");
+  let iconEl = document.querySelector("#icon");
   let temp = document.querySelector("#temp-display");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
@@ -97,12 +97,11 @@ function showPosition(position) {
     temp.innerHTML = Math.round(response.data.main.temp);
     wind.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} m/sec`;
     humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
-    icon.setAttribute(
+    iconEl.setAttribute(
       "src",
-      "http://openweathermap.org/img/w/" +
-        response.data.weather[0].icon +
-        ".png"
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+    iconEl.setAttribute("alt", response.data.weather[0].description);
   });
 }
 
