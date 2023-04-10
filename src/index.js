@@ -94,7 +94,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(function (response) {
     h1.innerHTML = response.data.name;
     describe.innerHTML = response.data.weather[0].main;
-    icon.innerHTML = response.data.weather[0].icon;
+    icon.innerHTML = `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`;
     temp.innerHTML = Math.round(response.data.main.temp);
     wind.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} m/sec`;
     humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
