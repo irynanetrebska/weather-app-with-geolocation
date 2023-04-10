@@ -83,6 +83,7 @@ searchEngine.addEventListener("submit", searchCity);
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
   let describe = document.querySelector("h5");
+  let icon = document.querySelector("#icon");
   let temp = document.querySelector("#temp-display");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
@@ -93,6 +94,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(function (response) {
     h1.innerHTML = response.data.name;
     describe.innerHTML = response.data.weather[0].main;
+    icon.innerHTML = response.data.weather[0].icon;
     temp.innerHTML = Math.round(response.data.main.temp);
     wind.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} m/sec`;
     humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
