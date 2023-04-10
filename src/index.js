@@ -26,6 +26,7 @@ let date = new Date();
 getDayTimelet(date);
 
 //Default city display
+/*
 function cityDefault(response) {
   let cityTalence = document.querySelector("#city-display");
   cityTalence.innerHTML = response.data.name;
@@ -39,11 +40,13 @@ function cityDefault(response) {
   humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
 }
 
+
 let apiKey = "5ad50f38578ea124960c2b83a79f211e";
 let units = "&units=metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Talence&appid=${apiKey}${units}`;
 
 axios.get(apiUrl).then(cityDefault);
+*/
 
 //Search and display information about the searched city
 function searchCity(event) {
@@ -79,6 +82,7 @@ searchEngine.addEventListener("submit", searchCity);
 //show geolocation
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
+  let describe = document.querySelector("h5");
   let temp = document.querySelector("#temp-display");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
@@ -88,6 +92,7 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(function (response) {
     h1.innerHTML = response.data.name;
+    describe.innerHTML = response.data.weather[0].main;
     temp.innerHTML = Math.round(response.data.main.temp);
     wind.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} m/sec`;
     humidity.innerHTML = `Humidity : ${response.data.main.humidity}%`;
@@ -100,5 +105,7 @@ function getCurrentPosition() {
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getCurrentPosition);
+
+getCurrentPosition();
 
 // https://www.shecodes.io/demos/vanilla  -- check it out!
