@@ -79,7 +79,13 @@ searchEngine.addEventListener("submit", searchCity);
 //show geolocation
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
-  h1.innerHTML = position;
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "5ad50f38578ea124960c2b83a79f211e";
+  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  axios.get(apiUrl).then(function (response) {
+    h1.innerHTML = response;
+  });
 }
 
 function getCurrentPosition() {
