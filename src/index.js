@@ -79,12 +79,18 @@ searchEngine.addEventListener("submit", searchCity);
 //show geolocation
 function showPosition(position) {
   let h1 = document.querySelector("#city-display");
+  let temp = document.querySelector("#temp-display");
+  let wind = document.querySelector("#wind");
+  let humidity = document.querySelector("#humidity");
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "5ad50f38578ea124960c2b83a79f211e";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(function (response) {
     h1.innerHTML = response.data.name;
+    temp.innerHTML = Math.round(response.data.main.temp);
+    wind.innerHTML = response.data.wind.speed;
+    humidity.innerHTML = response.data.main.humidity;
   });
 }
 
